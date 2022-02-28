@@ -1,8 +1,25 @@
 .card{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+    box-shadow: 0 0 10px;
+    border-radius: 10px;
+    border: none;
 }
 .card:hover{
     transform: scale(1.03);
+}
+.card img{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+.not-found{
+    display: none;
+}
+
+.loading{
+    width: 45vh;
+    margin: 0 auto;
+    display: none;
 }
