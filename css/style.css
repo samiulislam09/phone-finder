@@ -1,7 +1,6 @@
 .card{
     margin-bottom: 15px;
     transition: all 0.2s ease-in-out;
-    cursor: pointer;
     box-shadow: 0 0 10px;
     border-radius: 10px;
     border: none;
@@ -22,4 +21,8 @@
     width: 45vh;
     margin: 0 auto;
     display: none;
+}
+.show-more{
+    display: none;
+    margin: 20px 0;
 }
