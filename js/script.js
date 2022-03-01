@@ -45,8 +45,8 @@ const displayPhone = (data) => {
                 <div class="card g-2" style="width: 95%;">
                     <img src="${item.image}" class="card-img-top" alt="${item.brand} mobile image">
                     <div class="card-body">
-                        <h5 class="card-title">${item.brand}</h5>
-                        <p class="card-text">${item.phone_name}</p>
+                        <h5 class="card-title">Brand name: ${item.brand}</h5>
+                        <p class="card-text">Model: ${item.phone_name}</p>
                         <button class="btn btn-primary" id = "show-more-btn" onclick="loadDetail('${item.slug}')">Specification</button>
                     </div>
                 </div>
@@ -68,8 +68,6 @@ const loadDetail = (id) => {
 };
 // phone spec detail section
 const specDetails = (data) => {
-    console.log(data.brand);
-    console.log(data.others.GPS);
     const featureSection = document.getElementById('feature');
     featureSection.style.display = 'block'
     const div = document.createElement('div');
