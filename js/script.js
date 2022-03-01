@@ -32,7 +32,7 @@ const displayPhone = (data) => {
         const cards = document.getElementById('cards');
         cards.textContent = "";
         const allData = data.data;
-        const firstData = data.data.slice(0, 20);
+        const firstData = data.data.slice(1, 21);
         for (let item of firstData) {
             const div = document.createElement('div');
             div.classList.add('col-12');
@@ -46,21 +46,21 @@ const displayPhone = (data) => {
                     <div class="card-body">
                         <h5 class="card-title">${item.brand}</h5>
                         <p class="card-text">${item.phone_name}</p>
-                        <button class="btn btn-primary" onclick="loadDetail('${item.slug}')">Specification</button>
+                        <button class="btn btn-primary" id = "show-more-btn" onclick="loadDetail('${item.slug}')">Specification</button>
                     </div>
                 </div>
     `
             cards.appendChild(div)
         }
-        if (allData.length > 20) {
-            const showMore = document.getElementById('show-more');
+        // if (allData.length > 20) {
+        //     const showMore = document.getElementById('show-more');
             
-            showMore.style.display = 'block';
-            div = document.createElement('div');
-            div.classList.add('col-12');
-            div.innerHTML = `<button class="btn btn-primary" onclick="showRemainingData()">Show more</button>`;
-            showMore.appendChild(div);
-        }
+        //     showMore.style.display = 'block';
+        //     div = document.createElement('div');
+        //     div.classList.add('col-12');
+        //     div.innerHTML = `<button class="btn btn-primary" onclick="showRemainingData()">Show more</button>`;
+        //     showMore.appendChild(div);
+        // }
         
         toggleNotFound('none');
         toggleLoading('none');
@@ -77,6 +77,7 @@ const loadDetail = (id) => {
 // phone spec detail section
 const specDetails = (data) => {
     console.log(data.brand);
+    console.log(data.others.GPS);
     const featureSection = document.getElementById('feature');
     featureSection.style.display = 'block'
     const div = document.createElement('div');
@@ -85,8 +86,8 @@ const specDetails = (data) => {
     div.innerHTML = `
     <h3 class="text-center m-3">Details</h3>
         <div class="row">
-                        <div class="col-md-12 text-center"><img src="${data.image}" alt=""></div>
-                        <div class="col-md-12 my-3">
+                        <div class="col-md-6 text-center"><img src="${data.image}" alt=""></div>
+                        <div class="col-md-6 my-3">
                             <h3>Brand name: ${data.brand}</h3>
                             <h3>model: ${data.name}</h3>
                         </div>
@@ -95,19 +96,19 @@ const specDetails = (data) => {
                     <div class="row features">
                         <div class="col col-md-12">
                             <h2 class="text-center m-2">Features</h2>
-                            <p><span>Chipset: </span>${data.mainFeatures.chipSet}</p>
-                            <p><span>Storsge: </span>${data.mainFeatures.storage}</p>
-                            <p><span>Display Size: </span>${data.mainFeatures.displaySize}</p>
-                            <p><span>Memory: </span>${data.mainFeatures.memory}</p>
-                            <p><span>Sensors: </span>${data.mainFeatures.sensors}</p>
+                            <p><span>Chipset: </span>${(data.mainFeatures?.chipSet) == true}</p>
+                            <p><span>Storage: </span>${data.mainFeatures?.storage}</p>
+                            <p><span>Display Size: </span>${data.mainFeatures?.displaySize}</p>
+                            <p><span>Memory: </span>${data.mainFeatures?.memory}</p>
+                            <p><span>Sensors: </span>${data.mainFeatures?.sensors}</p>
                             <p><span>Others</span></p>
-                            <p><span>WLAN: </span>${data.others.WLAN}</p>
-                            <p><span>Bluetooth: </span>${data.others.Bluetooth}</p>
-                            <p><span>GPS: </span>${data.others.GPS}</p>
-                            <p><span>NFC: </span>${data.others.NFC}</p>
-                            <p><span>Radio: </span>${data.others.Radio}</p>
-                            <p><span>USB: </span>${data.others.USB}</p>
-                            <p><span>Release Date: </span>${data.releaseDate}</p>
+                            <p><span>WLAN: </span>${data.others?.WLAN}</p>
+                            <p><span>Bluetooth: </span>${data.others?.Bluetooth}</p>
+                            <p><span>GPS: </span>${data.others?.GPS}</p>
+                            <p><span>NFC: </span>${data.others?.NFC}</p>
+                            <p><span>Radio: </span>${data.others?.Radio}</p>
+                            <p><span>USB: </span>${data.others?.USB}</p>
+                            <p><span>Release Date: </span>${data?.releaseDate}</p>
                         </div>
                     </div>
     `
