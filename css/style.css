@@ -1,3 +1,6 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
 .card{
     margin-bottom: 15px;
     transition: all 0.2s ease-in-out;
@@ -9,7 +12,7 @@
     transform: scale(1.03);
 }
 .card img{
-    width: 80%;
+    width: 65%;
     margin: 0 auto;
     margin-top: 5px;
 }
@@ -25,4 +28,12 @@
 .show-more{
     display: none;
     margin: 20px 0;
+}
+.details{
+    margin-top: 15px;
+}
+
+.features span{
+    font-weight: bold;
+    font-size: 20px;
 }
