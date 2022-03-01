@@ -6,7 +6,7 @@ const phoneData = () => {
     fetch(`https://openapi.programming-hero.com/api/phones?search=${phoneName}`)
         .then(res => res.json())
         .then(data => displayPhone(data))
-    toggleLoading('block')
+    toggleLoading('block');
     document.getElementById('not-found').style.display = "none";
 }
 // not found handler
@@ -25,7 +25,7 @@ const displayPhone = (data) => {
     if (data.status == false) {
         cards.textContent = "";
         document.getElementById('not-found').style.display = 'block';
-        toggleLoading('none')
+        toggleLoading('none');
     } else {
         const cards = document.getElementById('cards');
         cards.textContent = "";
@@ -52,7 +52,7 @@ const displayPhone = (data) => {
         }
         if (allData.length > 20) {
             const showMore = document.getElementById('show-more');
-            showMore.style.display = 'block'
+            showMore.style.display = 'block';
             div = document.createElement('div');
             div.classList.add('col-12');
             div.innerHTML = `<button class="btn btn-primary" onclick="showRemainingData()">Show more</button>`;
@@ -70,18 +70,19 @@ const loadDetail = (id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => specDetails(data.data))
-}
+};
 // phone spec detail section
 const specDetails = (data) => {
     console.log(data.brand);
     const featureSection = document.getElementById('feature');
+    featureSection.style.display = 'block'
     const div = document.createElement('div');
     featureSection.textContent = '';
     div.classList.add('feature')
     div.innerHTML = `
     <h3 class="text-center m-3">Details</h3>
         <div class="row">
-                        <div class="col-md-12 text-center"><img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg" alt=""></div>
+                        <div class="col-md-12 text-center"><img src="${data.image}" alt=""></div>
                         <div class="col-md-12 my-3">
                             <h3>Brand name: ${data.brand}</h3>
                             <h3>model: ${data.name}</h3>
@@ -91,13 +92,19 @@ const specDetails = (data) => {
                     <div class="row features">
                         <div class="col col-md-12">
                             <h2 class="text-center m-2">Features</h2>
-                            <p><span>Chipset: </span>chipset information</p>
-                            <p><span>Storsge: </span>Storage</p>
-                            <p><span>Display Size: </span>Display</p>
-                            <p><span>Memory: </span>memory</p>
-                            <p><span>Sensors: </span>sensors</p>
-                            <p><span>Others: </span>others</p>
-                            <p><span>Release Date: </span>release date</p>
+                            <p><span>Chipset: </span>${data.mainFeatures.chipSet}</p>
+                            <p><span>Storsge: </span>${data.mainFeatures.storage}</p>
+                            <p><span>Display Size: </span>${data.mainFeatures.displaySize}</p>
+                            <p><span>Memory: </span>${data.mainFeatures.memory}</p>
+                            <p><span>Sensors: </span>${data.mainFeatures.sensors}</p>
+                            <p><span>Others</span></p>
+                            <p><span>WLAN: </span>${data.others.WLAN}</p>
+                            <p><span>Bluetooth: </span>${data.others.Bluetooth}</p>
+                            <p><span>GPS: </span>${data.others.GPS}</p>
+                            <p><span>NFC: </span>${data.others.NFC}</p>
+                            <p><span>Radio: </span>${data.others.Radio}</p>
+                            <p><span>USB: </span>${data.others.USB}</p>
+                            <p><span>Release Date: </span>${data.releaseDate}</p>
                         </div>
                     </div>
     `

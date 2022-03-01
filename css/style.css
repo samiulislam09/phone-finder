@@ -32,7 +32,12 @@ body{
 .details{
     margin-top: 15px;
 }
-
+#feature{
+    display: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    height: 1300px;
+}
 .features span{
     font-weight: bold;
     font-size: 20px;
