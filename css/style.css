@@ -36,7 +36,9 @@ body{
     display: none;
     overflow-wrap: break-word;
     hyphens: auto;
-    height: 1300px;
+    height: 1150px;
+    width: 95%;
+    margin: 0 auto;
 }
 .features span{
     font-weight: bold;

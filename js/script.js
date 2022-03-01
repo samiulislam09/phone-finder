@@ -26,6 +26,8 @@ const displayPhone = (data) => {
         cards.textContent = "";
         document.getElementById('not-found').style.display = 'block';
         toggleLoading('none');
+        const feature = document.getElementById('feature');
+        feature.style.display = 'none'
     } else {
         const cards = document.getElementById('cards');
         cards.textContent = "";
@@ -52,6 +54,7 @@ const displayPhone = (data) => {
         }
         if (allData.length > 20) {
             const showMore = document.getElementById('show-more');
+            
             showMore.style.display = 'block';
             div = document.createElement('div');
             div.classList.add('col-12');
