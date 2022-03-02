@@ -32,7 +32,6 @@ const displayPhone = (data) => {
     } else {
         const cards = document.getElementById('cards');
         cards.textContent = "";
-        document.getElementById('name-input').value = '';
         document.getElementById('feature').textContent = '';
         const allData = data.data;
         const firstData = allData.slice(0, 20);
