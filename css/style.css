@@ -19,9 +19,7 @@ body{
 .not-found{
     display: none;
 }
-.features p{
-    line-height: 12px;
-}
+
 
 .loading{
     width: 45vh;
