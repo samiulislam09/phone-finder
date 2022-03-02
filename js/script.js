@@ -33,7 +33,7 @@ const displayPhone = (data) => {
         cards.textContent = "";
         document.getElementById('feature').textContent = '';
         const allData = data.data;
-        const firstData = data.data.slice(1, 21);
+        const firstData = data.data.slice(0, 20);
         for (let item of firstData) {
             const div = document.createElement('div');
             div.classList.add('col-12');
@@ -86,19 +86,19 @@ const specDetails = (data) => {
                     <div class="row features">
                         <div class="col col-md-12">
                             <h2 class="text-center m-2">Features</h2>
-                            <p><span>Chipset: </span>${(data.mainFeatures.chipSet) == true}</p>
+                            <p><span>Chipset: </span>${data.mainFeatures.chipSet}</p>
                             <p><span>Storage: </span>${data.mainFeatures.storage}</p>
                             <p><span>Display Size: </span>${data.mainFeatures.displaySize}</p>
                             <p><span>Memory: </span>${data.mainFeatures.memory}</p>
                             <p><span>Sensors: </span>${data.mainFeatures.sensors}</p>
                             <p><span>Others</span></p>
-                            <p><span>WLAN: </span>${data.others.WLAN}</p>
-                            <p><span>Bluetooth: </span>${data.others.Bluetooth}</p>
-                            <p><span>GPS: </span>${data.others.GPS}</p>
-                            <p><span>NFC: </span>${data.others.NFC}</p>
-                            <p><span>Radio: </span>${data.others.Radio}</p>
-                            <p><span>USB: </span>${data.others.USB}</p>
-                            <p><span>Release Date: </span>${data.releaseDate}</p>
+                            <p><span>WLAN: </span>${data.others.WLAN ? data.others.WLAN:"not available"}</p>
+                            <p><span>Bluetooth: </span>${data.others.Bluetooth?data.others.Bluetooth:"Not avaolable"}</p>
+                            <p><span>GPS: </span>${data.others.GPS?data.others.GPS:"Not available"}</p>
+                            <p><span>NFC: </span>${data.others.NFC ? data.others.NFC:"not availbale"}</p>
+                            <p><span>Radio: </span>${data.others.Radio ? data.others.Radio:"not available"}</p>
+                            <p><span>USB: </span>${data.others.USB ? data.others.USB:"not available"}</p>
+                            <p><span>Release Date: </span>${data.releaseDate?data.releaseDate : 'not available'}</p>
                         </div>
                     </div>
     `
