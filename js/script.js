@@ -26,6 +26,7 @@ const displayPhone = (data) => {
         cards.textContent = "";
         document.getElementById('not-found').style.display = 'block';
         toggleLoading('none');
+        document.getElementById('show-more').style.display = 'none';
         const feature = document.getElementById('feature');
         feature.style.display = 'none'
     } else {
@@ -33,7 +34,14 @@ const displayPhone = (data) => {
         cards.textContent = "";
         document.getElementById('feature').textContent = '';
         const allData = data.data;
-        const firstData = data.data.slice(0, 20);
+        const firstData = allData.slice(0, 20);
+        if (allData.length > 20) {
+            const showMore = document.getElementById('show-more');
+            div = document.createElement('div');
+            div.classList.add('col-12');
+            div.innerHTML = `<button class="btn btn-primary" onclick="showRemainingData()">Show more</button>`;
+            showMore.appendChild(div)
+        }
         for (let item of firstData) {
             const div = document.createElement('div');
             div.classList.add('col-12');
@@ -59,6 +67,13 @@ const displayPhone = (data) => {
     }
     
 }
+
+// show remaining items
+
+// const showRemainingData = () => {
+    
+// }
+
 // load details data in ui
 const loadDetail = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
@@ -68,11 +83,11 @@ const loadDetail = (id) => {
 };
 // phone spec detail section
 const specDetails = (data) => {
-    console.log(data);
     const featureSection = document.getElementById('feature');
     featureSection.style.display = 'block'
     const div = document.createElement('div');
     featureSection.textContent = '';
+    
     div.classList.add('feature')
     div.innerHTML = `
     <h3 class="text-center m-3">Details</h3>
