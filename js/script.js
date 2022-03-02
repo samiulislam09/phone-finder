@@ -45,8 +45,8 @@ const displayPhone = (data) => {
                 <div class="card g-2" style="width: 95%;">
                     <img src="${item.image}" class="card-img-top" alt="${item.brand} mobile image">
                     <div class="card-body">
-                        <h5 class="card-title">Brand name: ${item.brand}</h5>
-                        <p class="card-text">Model: ${item.phone_name}</p>
+                    <p class="card-text">Model: ${item.phone_name}</p>
+                        <h5 class="card-title">Brand: ${item.brand}</h5>
                         <button class="btn btn-primary" id = "show-more-btn" onclick="loadDetail('${item.slug}')">Specification</button>
                     </div>
                 </div>
@@ -68,6 +68,7 @@ const loadDetail = (id) => {
 };
 // phone spec detail section
 const specDetails = (data) => {
+    console.log(data);
     const featureSection = document.getElementById('feature');
     featureSection.style.display = 'block'
     const div = document.createElement('div');
@@ -92,12 +93,12 @@ const specDetails = (data) => {
                             <p><span>Memory: </span>${data.mainFeatures.memory}</p>
                             <p><span>Sensors: </span>${data.mainFeatures.sensors}</p>
                             <p><span>Others</span></p>
-                            <p><span>WLAN: </span>${data.others.WLAN ? data.others.WLAN:"not available"}</p>
-                            <p><span>Bluetooth: </span>${data.others.Bluetooth?data.others.Bluetooth:"Not avaolable"}</p>
-                            <p><span>GPS: </span>${data.others.GPS?data.others.GPS:"Not available"}</p>
-                            <p><span>NFC: </span>${data.others.NFC ? data.others.NFC:"not availbale"}</p>
-                            <p><span>Radio: </span>${data.others.Radio ? data.others.Radio:"not available"}</p>
-                            <p><span>USB: </span>${data.others.USB ? data.others.USB:"not available"}</p>
+                            <p><span>WLAN: </span>${data.others?.WLAN ? data.others.WLAN:"not available"}</p>
+                            <p><span>Bluetooth: </span>${data.others?.Bluetooth?data.others.Bluetooth:"Not avaolable"}</p>
+                            <p><span>GPS: </span>${data.others?.GPS?data.others.GPS:"Not available"}</p>
+                            <p><span>NFC: </span>${data.others?.NFC ? data.others.NFC:"not availbale"}</p>
+                            <p><span>Radio: </span>${data.others?.Radio ? data.others.Radio:"not available"}</p>
+                            <p><span>USB: </span>${data.others?.USB ? data.others.USB:"not available"}</p>
                             <p><span>Release Date: </span>${data.releaseDate?data.releaseDate : 'not available'}</p>
                         </div>
                     </div>
