@@ -32,11 +32,13 @@ const displayPhone = (data) => {
     } else {
         const cards = document.getElementById('cards');
         cards.textContent = "";
+        document.getElementById('name-input').value = '';
         document.getElementById('feature').textContent = '';
         const allData = data.data;
         const firstData = allData.slice(0, 20);
         if (allData.length > 20) {
             const showMore = document.getElementById('show-more');
+            showMore.textContent = '';
             div = document.createElement('div');
             div.classList.add('col-12');
             div.innerHTML = `<button class="btn btn-primary" onclick="showRemainingData()">Show more</button>`;
