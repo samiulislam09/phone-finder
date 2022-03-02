@@ -70,9 +70,42 @@ const displayPhone = (data) => {
 
 // show remaining items
 
-// const showRemainingData = () => {
+const showRemainingData = () => {
+    const inputFromuser = document.getElementById('name-input').value;
+    const phoneName = inputFromuser.toLowerCase();
+    fetch(`https://openapi.programming-hero.com/api/phones?search=${phoneName}`)
+        .then(res => res.json())
+        .then(data => displayAnotherPhone(data))
     
-// }
+}
+
+const displayAnotherPhone = (data) => {
+    const cards = document.getElementById('cards');
+    const reaminingData = data.data.slice(21, data.data.length - 1);
+    console.log(reaminingData);
+    for (let item of reaminingData) {
+        const div = document.createElement('div');
+        div.classList.add('col-12');
+        div.classList.add('col-md-4');
+        div.classList.add('d-flex');
+        div.classList.add('justify-content-center');
+        div.classList.add('text-center');
+        div.innerHTML = `
+                <div class="card g-2" style="width: 95%;">
+                    <img src="${item.image}" class="card-img-top" alt="${item.brand} mobile image">
+                    <div class="card-body">
+                    <p class="card-text">Model: ${item.phone_name}</p>
+                        <h5 class="card-title">Brand: ${item.brand}</h5>
+                        <button class="btn btn-primary" id = "show-more-btn" onclick="loadDetail('${item.slug}')">Specification</button>
+                    </div>
+                </div>
+    `
+        cards.appendChild(div)
+    }
+    document.getElementById('show-more').style.display = 'none'
+
+
+}
 
 // load details data in ui
 const loadDetail = (id) => {
